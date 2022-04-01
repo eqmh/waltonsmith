@@ -121,7 +121,6 @@ cols <- c(ox.col1(length(breaks[breaks<2])),
 
 ### ----------------- plots -----------------
 setwd("~/Desktop/professional/projects/Postdoc_FL/figures")
-# png('WS22022_temp_bottom.png', height = 8, width = 8, units = 'in', res=300)
 png('WS22022_bottom.png', height = 11, width = 4, units = 'in', res=300)
 par(mfrow=c(3,1),mar=c(4.5,4,2,1),oma=c(4,1,4,1))
 imagePlot(temp_kriged$x,
@@ -137,24 +136,14 @@ contour(temp_kriged$x,
         levels=temp_breaks,add=T)
 image(temp_se,add=T,breaks=quantile(temp_se$z,c(.9,1),na.rm=T),col='white')
 image(topo_lon,topo_lat,topo,breaks=c(-1,100),col='white',add=T)
-# plot(FL,col='gray70',add=T)
 plot(world,col='gray70',add=T)
 contour(topo_lon,topo_lat,topo,add=T,levels=c(-100,-50,-25,-10),col='gray40')
 points(data3$Longitude.Decimal,data3$Latitude.Decimal,pch=20,col='green')
 mtext(expression(paste('Longitude (',degree,'W)')),1,line=3,cex=.75)
 mtext(expression(paste('Latitude (',degree,'N)')),2,line=3,cex=.75)
 mtext(expression(paste('Bottom Temperature (',degree,'F)')),adj=1,cex=.75)
-# mtext(paste('Collected:',
-#             paste(
-#               paste(month.abb[month(data3$Date.GMT[1])],
-#                     day(data3$Date.GMT[1])),
-#               paste(month.abb[month(data3$Date.GMT[nrow(data3)])],
-#                     day(data3$Date.GMT[nrow(data3)])),
-#               sep='-')),
-#       side=3,adj=0)
-# dev.off()
 
-# png('WS22022_sal_bottom.png', height = 8, width = 8, units = 'in', res=300)
+
 imagePlot(sal_kriged$x,
           sal_kriged$y,
           sal_kriged$z,
@@ -168,24 +157,13 @@ contour(sal_kriged$x,
         levels=sal_breaks,add=T)
 image(sal_se,add=T,breaks=quantile(sal_se$z,c(.9,1),na.rm=T),col='white')
 image(topo_lon,topo_lat,topo,breaks=c(-1,100),col='white',add=T)
-# plot(FL,col='gray70',add=T)
 plot(world,col='gray70',add=T)
 contour(topo_lon,topo_lat,topo,add=T,levels=c(-100,-50,-25,-10),col='gray40')
 points(data3$Longitude.Decimal,data3$Latitude.Decimal,pch=20,col='magenta')
 mtext(expression(paste('Longitude (',degree,'W)')),1,line=3,cex=.75)
 mtext(expression(paste('Latitude (',degree,'N)')),2,line=3,cex=.75)
 mtext('Salinity (PSU)',adj=1,cex=.75)
-# mtext(paste('Collected:',
-#             paste(
-#               paste(month.abb[month(data3$Date.GMT[1])],
-#                     day(data3$Date.GMT[1])),
-#               paste(month.abb[month(data3$Date.GMT[nrow(data3)])],
-#                     day(data3$Date.GMT[nrow(data3)])),
-#               sep='-')),
-#       side=3,adj=0)
-# dev.off()
 
-# png('WS22022_DO_bottom.png', height = 8, width = 8, units = 'in', res=300)
 imagePlot(do_kriged$x,
           do_kriged$y,
           do_kriged$z,
@@ -199,22 +177,13 @@ contour(do_kriged$x,
         levels=breaks,add=T)
 image(do_se,add=T,breaks=quantile(do_se$z,c(.9,1),na.rm=T),col='white')
 image(topo_lon,topo_lat,topo,breaks=c(-2,100),col='white',add=T)
-# plot(FL,col='gray70',add=T)
 plot(world,col='gray70',add=T)
 contour(topo_lon,topo_lat,topo,add=T,levels=c(-100,-50,-25,-10),col='gray40')
 points(data3$Longitude.Decimal,data3$Latitude.Decimal,pch=20,col='orange')
 mtext(expression(paste('Longitude (',degree,'W)')),1,line=3,cex=.75)
 mtext(expression(paste('Latitude (',degree,'N)')),2,line=3,cex=.75)
 mtext(expression(paste('Bottom DO (mg l'^-1,')')),adj=1,cex=.75)
-# mtext(paste('Collected:',
-#             paste(
-#               paste(month.abb[month(data3$Date.GMT[1])],
-#                     day(data3$Date.GMT[1])),
-#               paste(month.abb[month(data3$Date.GMT[nrow(data3)])],
-#                     day(data3$Date.GMT[nrow(data3)])),
-#               sep='-')),
-#       side=3,adj=0)
-### title
+
 mtext('Walton Smith Bulletin',
       outer=T,line=1,side=3,font=2,at=.05,adj=0,cex=1.25)
 mtext(paste('Collected:',
