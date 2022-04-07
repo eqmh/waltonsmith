@@ -100,6 +100,7 @@ chl_col <- colorRampPalette(c('honeydew2','darkseagreen3','forestgreen','darksla
 #### -------------- kriging --------------
 ### krigging resolution
 resolution <- .01
+adj <- .01 # adjustment for plotting purposes; this value is arbitrary for my own aesthetics
 ### krigging locations
 underway.loc <- cbind(lon=underway$lon,lat=underway$lat)
 loc.grid <- list(lon=seq(min(underway$lon,na.rm=T)-adj, max(underway$lon,na.rm=T)+adj,resolution),
