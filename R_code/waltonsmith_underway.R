@@ -9,7 +9,9 @@ library(rgdal)
 
 ### load bathymetric data for plotting and masking shallow waters
 ### Can be downloaded from: https://www.ngdc.noaa.gov/mgg/global/
+### NOAA NCEI updated this website and the new version is a .grd which can be parsed using the raster package
 ### there's also an ERDDAP version if your more comfortable: https://coastwatch.pfeg.noaa.gov/erddap/griddap/etopo180.graph
+### There is an additional code to extract the ERDDAP version
 setwd("~/Desktop/professional/biblioteca/data")
 bathy <- nc_open('etopo1.nc')
 topo <- ncvar_get(bathy, 'Band1')
@@ -20,8 +22,8 @@ nc_close(bathy)
 
 ################## geographic scope
 lonbox_e <- -79 ### Florida Bay
-lonbox_w <- -84 ### mouth of Mississippi River
-latbox_n <- 38 ### northern coast
+lonbox_w <- -86 ### mouth of Mississippi River
+latbox_n <- 31 ### northern coast
 latbox_s <- 24 ### remove the Keys
 
 ind_lat <- which(topo_lat<latbox_n & topo_lat>latbox_s)
