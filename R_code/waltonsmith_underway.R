@@ -12,7 +12,7 @@ library(rgdal)
 ### NOAA NCEI updated this website and the new version is a .grd which can be parsed using the raster package
 ### there's also an ERDDAP version if your more comfortable: https://coastwatch.pfeg.noaa.gov/erddap/griddap/etopo180.graph
 ### There is an additional code to extract the ERDDAP version
-setwd("~/Desktop/professional/biblioteca/data")
+setwd("G:/My Drive/ongoing_research/pigment_SF")
 bathy <- nc_open('etopo1.nc')
 topo <- ncvar_get(bathy, 'Band1')
 topo_lat <- ncvar_get(bathy, 'lat')
@@ -35,14 +35,14 @@ topo <- topo[ind_lon,ind_lat]
 
 ### load map
 ### coastline map can be downloaded from: https://www.ngdc.noaa.gov/mgg/shorelines/
-setwd("~/Desktop/professional/biblioteca/data/shapefiles/gshhg-shp-2.3.7/GSHHS_shp/h/")
+setwd("G:/My Drive/ongoing_research/pigment_SF/GSHHS_shp/h")
 world <- readOGR('GSHHS_h_L1.shp')
 ### crop to make shapefile smaller and use less RAM
 world <- crop(world, extent(-84, -79, 24.5, 28))
 
 
 ### load underway data
-setwd('~/Downloads/')
+setwd("G:/My Drive/ongoing_research/pigment_SF")
 underway <- read.csv('WS22072_out.csv')
 ### cruise name for file naming
 cruise <- 'WS22072'
@@ -100,7 +100,7 @@ chl_col <- colorRampPalette(c('honeydew2','darkseagreen3','forestgreen','darksla
 #### -------------- kriging --------------
 ### krigging resolution
 resolution <- .01
-adj <- .01 # adjustment for plotting purposes; this value is arbitrary for my own aesthetics
+adj <- .1
 ### krigging locations
 underway.loc <- cbind(lon=underway$lon,lat=underway$lat)
 loc.grid <- list(lon=seq(min(underway$lon,na.rm=T)-adj, max(underway$lon,na.rm=T)+adj,resolution),
@@ -162,7 +162,7 @@ adj <- .1
 xlims <- c(min(orig$lon,na.rm=T)-adj, max(orig$lon,na.rm=T)+adj)
 ylims <- c(min(orig$lat,na.rm=T)-adj, max(orig$lat,na.rm=T)+adj)
 
-setwd("~/Desktop/professional/projects/Postdoc_FL/figures")
+setwd('~/waltonsmith/figures')
 png(paste0(cruise,'_underway.png'), height = 11, width = 4, units = 'in', res=300)
 par(mfrow=c(3,1),mar=c(4.5,4,2,1),oma=c(4,1,4,1))
 imagePlot(temp_kriged$x,
