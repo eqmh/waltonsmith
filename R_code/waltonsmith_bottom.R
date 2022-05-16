@@ -8,7 +8,7 @@ library(ncdf4)
 library(rgdal)
 
 
-setwd("~/Desktop/professional/biblioteca/data")
+setwd("G:/My Drive/ongoing_research/pigment_SF")
 bathy <- nc_open('etopo1.nc')
 topo <- ncvar_get(bathy, 'Band1')
 topo_lat <- ncvar_get(bathy, 'lat')
@@ -33,7 +33,7 @@ topo <- topo[ind_lon,ind_lat]
 # setwd("C:/Users/brendan.turley/Desktop/FL_habs/ne_10m_admin_0_countries")
 # setwd("~/Desktop/professional/biblioteca/data/shapefiles/ne_10m_admin_0_countries")
 # world <- readOGR('ne_10m_admin_0_countries.shp')
-setwd("~/Desktop/professional/biblioteca/data/shapefiles/gshhg-shp-2.3.7/GSHHS_shp/h/")
+setwd("G:/My Drive/ongoing_research/pigment_SF/GSHHS_shp/h")
 world <- readOGR('GSHHS_h_L1.shp')
 world <- crop(world, extent(-84, -79, 24.5, 28))
 # setwd("~/Desktop/professional/biblioteca/data/shapefiles/Florida_Shoreline__1_to_40%2C000_Scale_-shp")
